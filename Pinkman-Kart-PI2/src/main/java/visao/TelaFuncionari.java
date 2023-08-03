@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.text.MaskFormatter;
 
 import controle.FornecedorDAO;
@@ -16,6 +17,7 @@ import java.awt.event.ActionListener;
 import java.text.ParseException;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
@@ -224,6 +226,17 @@ public class TelaFuncionari extends JFrame {
 		contentPane.add(btnListar);
 		
 		JButton btnExcluir = new JButton("Excluir");
+		btnExcluir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				 int selectedRow = table.getSelectedRow();
+	                if (selectedRow != -1) {
+	                    // Remove a linha selecionada
+	                    DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
+	                    tableModel.removeRow(selectedRow);
+	                    JOptionPane.showMessageDialog(null, "Linha excluída com sucesso!");
+	                }
+			}
+		});
 		btnExcluir.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnExcluir.setBounds(66, 456, 276, 53);
 		contentPane.add(btnExcluir);

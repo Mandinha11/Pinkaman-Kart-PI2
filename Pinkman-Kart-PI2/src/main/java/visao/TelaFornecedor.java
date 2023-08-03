@@ -161,6 +161,13 @@ public class TelaFornecedor extends JFrame {
 		btnExcluir.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 16));
 		btnExcluir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				 int selectedRow = table.getSelectedRow();
+	                if (selectedRow != -1) {
+	                    // Remove a linha selecionada
+	                    DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
+	                    tableModel.removeRow(selectedRow);
+	                    JOptionPane.showMessageDialog(null, "Linha excluída com sucesso!");
+	                }
 			}
 		});
 		btnExcluir.setBounds(1689, 213, 208, 42);

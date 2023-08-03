@@ -206,6 +206,17 @@ public class TelaKarts extends JFrame {
 		
 		
 		JButton btnExcluir = new JButton("Excluir");
+		btnExcluir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				 int selectedRow = table.getSelectedRow();
+	                if (selectedRow != -1) {
+	                    // Remove a linha selecionada
+	                    DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
+	                    tableModel.removeRow(selectedRow);
+	                    JOptionPane.showMessageDialog(null, "Linha excluída com sucesso!");
+	                }
+			}
+		});
 		btnExcluir.setBounds(524, 612, 386, 41);
 		btnExcluir.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 16));
 		contentPane.add(btnExcluir);

@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.text.MaskFormatter;
 
 import controle.ClienteDAO;
@@ -310,6 +311,17 @@ public class TelaVendas extends JFrame {
 		contentPane.add(btnListar);
 		
 		JButton btnExcluir = new JButton("Excluir");
+		btnExcluir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				 int selectedRow = table.getSelectedRow();
+	                if (selectedRow != -1) {
+	                    // Remove a linha selecionada
+	                    DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
+	                    tableModel.removeRow(selectedRow);
+	                    JOptionPane.showMessageDialog(null, "Linha excluída com sucesso!");
+	                }
+			}
+		});
 		btnExcluir.setBounds(36, 363, 187, 49);
 		contentPane.add(btnExcluir);
 		
